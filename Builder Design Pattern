@@ -1,0 +1,67 @@
+# Builder Design Pattern 
+
+class Burger {
+    public String Buns , Patty;
+    boolean Lettuce , Tomato  ,  Potato;
+     private  Burger(BurgerBuilder b){
+     this.Buns= b.Buns;
+     this.Patty = b.Patty;
+     this.Lettuce = b.Lettuce;
+     this.Tomato = b.Tomato;
+     this.Potato = b.Potato;
+    }
+
+    public static  class BurgerBuilder{
+         String  Buns = "No Needed";
+         String Patty = "No Needed";
+         boolean Lettuce = false;
+         boolean Tomato = false;
+         boolean Potato = false;
+
+        public BurgerBuilder setBuns(String buns) {
+            Buns = buns;
+            return (this);
+        }
+
+        public BurgerBuilder setPatty(String patty) {
+            Patty = patty;
+            return this ;
+        }
+
+        public BurgerBuilder setLettuce(boolean lettuce) {
+            Lettuce = lettuce;
+            return this;
+        }
+
+        public BurgerBuilder setPotato(boolean potato) {
+            Potato = potato;
+            return this;
+        }
+
+        public BurgerBuilder setTomato(boolean tomato) {
+            Tomato = tomato;
+            return this;
+        }
+
+
+        public Burger build(){
+            return new Burger (this);
+        }
+
+    }
+
+
+}
+
+
+
+
+class Main{
+    public static void main(String[] args) {
+        Burger.BurgerBuilder burger = new Burger.BurgerBuilder();
+        burger.setBuns("Hard").setLettuce(true).setPatty("Meat").setTomato(true).build();
+        System.out.println(burger.Buns );
+        System.out.println( burger.Lettuce );
+        System.out.println( burger.Potato);
+    }
+}
