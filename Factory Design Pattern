@@ -1,0 +1,76 @@
+# Factory Design Pattern
+
+abstract class Vechicles{
+    public  abstract void start();
+    public abstract void stop();
+}
+
+class Car extends Vechicles{
+    public void start(){
+        System.out.println("Car has Started");
+    }
+
+    public void stop(){
+        System.out.println("Car has Stoppped");
+    }
+}
+
+
+class Truck extends Vechicles{
+    public void start(){
+        System.out.println("Truck has Started");
+    }
+
+    public void stop(){
+        System.out.println("Truck has Stoppped");
+    }
+}
+
+class MotorBike extends Vechicles{
+    public void start(){
+        System.out.println("Motor Bike has Started");
+    }
+
+    public void stop(){
+        System.out.println("Motor Bike Stoppped");
+    }
+}
+
+class Plane extends Vechicles{
+    public void start(){
+        System.out.println("Plane Bike has Started");
+    }
+
+    public void stop(){
+        System.out.println("Plane Bike Stoppped");
+    }
+}
+
+
+class VechiclesFactory{
+    String type;
+    Vechicles getFactory(String type){
+     if(type.equalsIgnoreCase("car")){
+         return new Car() ;
+     } else if (type.equalsIgnoreCase("truck")) {
+         return new Truck();
+     } else if (type.equalsIgnoreCase("Motorbike")) {
+         return new MotorBike();
+     } else if (type.equalsIgnoreCase("plane")) {
+         return new Plane();
+     } else{
+         throw new IllegalArgumentException("There no vechicle that is specified by you ");
+     }
+    }
+}
+
+
+class Main{
+    public static void main(String[] args) {
+        VechiclesFactory vechicle = new VechiclesFactory();
+        Vechicles car = vechicle.getFactory("plane");
+        car.start();
+        car.stop();
+
+    }
+}
