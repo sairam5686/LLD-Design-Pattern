@@ -1,0 +1,56 @@
+abstract class Shape{
+    void implementShape(){}
+}
+
+class Circle extends Shape{
+    @Override
+    void implementShape() {
+        System.out.println("This is an Circle");
+    }
+}
+
+class Square extends  Shape{
+    @Override
+    void implementShape() {
+        System.out.println("This is an Square");
+    }
+}
+
+class Triangle extends Shape{
+    @Override
+    void implementShape() {
+        System.out.println("This is an Triangle");
+    }
+}
+
+class Rectangle extends Shape{
+    @Override
+    void implementShape() {
+        System.out.println("This is an Rectangle");
+    }
+}
+
+
+class ShapesImplementations {
+    private Shape  ShapeInstance;
+    ShapesImplementations(Shape Shapes){
+        this.ShapeInstance = Shapes;
+    }
+     void SetImplements(){
+        ShapeInstance.implementShape();
+    }
+    void setShapes(Shape Shapes){
+        this.ShapeInstance = Shapes;
+    }
+
+}
+
+class Main{
+    public static void main(String[] args) {
+        ShapesImplementations shape = new ShapesImplementations(new Triangle());
+        shape.SetImplements();
+        shape.setShapes(new Circle());
+        shape.SetImplements();
+
+    }
+}
